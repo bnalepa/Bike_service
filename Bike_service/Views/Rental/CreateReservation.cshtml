@@ -1,0 +1,69 @@
+﻿@model Bike_service.Models.Rental
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>Zarezerwuj rower</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View">
+            <div asp-validation-summary="All"></div>
+            <div class="form-group">
+                <h6>
+                    Imię:
+                </h6>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h6>
+                    Nazwisko:
+                </h6>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h6>
+                    E-mail:</h6>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h6>
+                    Numer telefonu:
+                </h6>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>
+                    Data wypożyczenia:
+                </h5>
+                <h6>
+                    Data początkowa:
+                </h6>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h6>
+                    Data końcowa:
+                </h6>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

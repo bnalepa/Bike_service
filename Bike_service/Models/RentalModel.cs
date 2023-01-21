@@ -22,9 +22,10 @@ public class Rental
     [Phone]
     [Required(ErrorMessage = "Proszę podać poprawny numer telefonu!")]
     public int Phone { get; set; }
-    [Required(ErrorMessage = "Proszę podać poprawny numer telefonu!")]
+    [Required(ErrorMessage = "Proszę podać poprawną datę początkową!")]
     [DataType(DataType.Date)]
     public int StartDate { get; set; }
+    [Required(ErrorMessage = "Proszę podać poprawną datę końcową!")]
     [DataType(DataType.Date)]
     public int EndDate { get; set; }
 }
