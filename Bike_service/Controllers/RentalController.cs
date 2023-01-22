@@ -14,7 +14,11 @@ namespace Bike_service.Controllers
         {
             return View("CreateReservation");
         }
-
+        [HttpPost]
+        public IActionResult AfterCreateReservation()
+        {
+            return View("AfterCreateReservation");
+        }
 
     }
 }
