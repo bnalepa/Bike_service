@@ -4,7 +4,7 @@ using Bike_service.Models;
 namespace Bike_service.Controllers
 {
 
-    public class RentalController : Controller
+    public class RentalsController : Controller
     {
         public IActionResult Index()
         {

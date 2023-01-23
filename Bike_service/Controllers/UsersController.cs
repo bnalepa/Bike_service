@@ -2,7 +2,7 @@
 
 namespace Bike_service.Controllers
 {
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         public IActionResult Login()
         {

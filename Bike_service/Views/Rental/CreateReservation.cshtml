@@ -1,4 +1,4 @@
-﻿@model Bike_service.Models.Rental
+﻿@*@model Bike_service.Models.Rental
 
 @{
     ViewData["Title"] = "View";
@@ -34,8 +34,7 @@
             <div class="form-group">
                 <h6>
                     Numer telefonu:
-                </h6>
-                <input asp-for="Phone" class="form-control" />
+                </h6>                <input asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -67,3 +66,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+*@
