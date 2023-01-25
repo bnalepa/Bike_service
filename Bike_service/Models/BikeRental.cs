@@ -8,7 +8,7 @@
 
 
 
-        public Bike Bike { get; set; }
-        public Rental Rental { get; set; }
+        public Bike? Bike { get; set; }
+        public Rental? Rental { get; set; }
     }
 }

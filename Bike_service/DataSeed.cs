@@ -44,75 +44,75 @@ namespace Bike_service
                 _context.SaveChanges();
             };
 
-            //if (!_context.Bikes.Any())
-            //{
-            //    var bikes = new List<Bike>()
-            //{
+            if (!_context.Bikes.Any())
+            {
+                var bikes = new List<Bike>()
+            {
 
-            //    new Bike()
-            //    {
-            //    Name = "Rower",
-            //    Description = "Szybki",
-            //    Type = Bike.Types.miejski,
-            //    },
-            //    new Bike()
-            //    {
-            //    Name = "Rower 2",
-            //    Description = "Wolny",
-            //    Type = Bike.Types.górski,
-            //    },
-            //};
-            //    _context.Bikes.AddRange(bikes);
-            //    _context.SaveChanges();
-            //};
+                new Bike()
+                {
+                Name = "Rower",
+                Description = "Szybki",
+                Type = Bike.Types.miejski,
+                },
+                new Bike()
+                {
+                Name = "Rower 2",
+                Description = "Wolny",
+                Type = Bike.Types.górski,
+                },
+            };
+                _context.Bikes.AddRange(bikes);
+                _context.SaveChanges();
+            };
 
-            //if (!_context.Rentals.Any())
-            //{
-            //    var rentals = new List<Rental>()
-            //{
+            if (!_context.Rentals.Any())
+            {
+                var rentals = new List<Rental>()
+            {
 
-            //    new Rental()
-            //    {
-            //    StartDate = DateTime.Parse("2023-01-22"),
-            //    EndDate = DateTime.Parse("2023-01-25"),
-            //    },
-            //};
-            //    _context.Rentals.AddRange(rentals);
-            //    _context.SaveChanges();
-            //};
-            //};
-
-
-            //if (!_context.BikeRentals.Any())
-            //{
-            //    var bikeRentals = new List<BikeRental>()
-            //{
-            //    new BikeRental()
-            //    {
-            //        BikeId = 1,
-            //        RentalId = 1,
-            //    },
+                new Rental()
+                {
+                StartDate = DateTime.Parse("2023-01-22"),
+                EndDate = DateTime.Parse("2023-01-25"),
+                },
+            };
+                _context.Rentals.AddRange(rentals);
+                _context.SaveChanges();
+            };
 
 
-            //};
-            //    _context.BikeRentals.AddRange(bikeRentals);
-            //    _context.SaveChanges();
-            //}
 
-            //if (!_context.CustomerRentals.Any())
-            //{
-            //    var customerRentals = new List<CustomerRental>()
-            //{
-            //    new CustomerRental()
-            //    {
-            //        CustomerId = 2,
-            //        RentalId = 1,
-            //    },
+            if (!_context.BikeRentals.Any())
+            {
+                var bikeRentals = new List<BikeRental>()
+            {
+                new BikeRental()
+                {
+                    BikeId = 1,
+                    RentalId = 1,
+                },
 
-            //};
-            //    _context.CustomerRentals.AddRange(customerRentals);
-            //    _context.SaveChanges();
-            //}
+
+            };
+                _context.BikeRentals.AddRange(bikeRentals);
+                _context.SaveChanges();
+            }
+
+            if (!_context.CustomerRentals.Any())
+            {
+                var customerRentals = new List<CustomerRental>()
+            {
+                new CustomerRental()
+                {
+                    CustomerId = 2,
+                    RentalId = 1,
+                },
+
+            };
+                _context.CustomerRentals.AddRange(customerRentals);
+                _context.SaveChanges();
+            }
 
 
 
