@@ -15,11 +15,11 @@ public class Rental
 
     [Required(ErrorMessage = "Proszę podać poprawną datę początkową!")]
     [DataType(DataType.Date)]
-    public int StartDate { get; set; }
+    public DateTime StartDate { get; set; }
     [Required(ErrorMessage = "Proszę podać poprawną datę końcową!")]
     [DataType(DataType.Date)]
-    public int EndDate { get; set; }
+    public DateTime EndDate { get; set; }
 
-    public virtual ICollection<BikeRental> BikeRentals { get; set; }
-    public virtual ICollection<CustomerRental> CustomerRentals { get; set; }
+    public virtual ICollection<BikeRental>? BikeRentals { get; set; }
+    public virtual ICollection<CustomerRental>? CustomerRentals { get; set; }
 }

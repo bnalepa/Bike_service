@@ -35,6 +35,9 @@ namespace Bike_service.Data
         public DbSet<Bike> Bikes { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<BikeRental> BikeRentals { get; set; }
+        public DbSet<CustomerRental> CustomerRentals { get; set; }
+
 
     }
 }

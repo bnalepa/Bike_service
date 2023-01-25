@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Bikeservice.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstCreate : Migration
+    public partial class FMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,6 +18,7 @@ namespace Bikeservice.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -46,8 +48,8 @@ namespace Bikeservice.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StartDate = table.Column<int>(type: "int", nullable: false),
-                    EndDate = table.Column<int>(type: "int", nullable: false)
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,7 +57,7 @@ namespace Bikeservice.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BikeRental",
+                name: "BikeRentals",
                 columns: table => new
                 {
                     BikeId = table.Column<int>(type: "int", nullable: false),
@@ -63,15 +65,15 @@ namespace Bikeservice.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BikeRental", x => new { x.BikeId, x.RentalId });
+                    table.PrimaryKey("PK_BikeRentals", x => new { x.BikeId, x.RentalId });
                     table.ForeignKey(
-                        name: "FK_BikeRental_Bikes_BikeId",
+                        name: "FK_BikeRentals_Bikes_BikeId",
                         column: x => x.BikeId,
                         principalTable: "Bikes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BikeRental_Rentals_RentalId",
+                        name: "FK_BikeRentals_Rentals_RentalId",
                         column: x => x.RentalId,
                         principalTable: "Rentals",
                         principalColumn: "Id",
@@ -79,7 +81,7 @@ namespace Bikeservice.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CustomerRental",
+                name: "CustomerRentals",
                 columns: table => new
                 {
                     CustomerId = table.Column<int>(type: "int", nullable: false),
@@ -87,15 +89,15 @@ namespace Bikeservice.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerRental", x => new { x.CustomerId, x.RentalId });
+                    table.PrimaryKey("PK_CustomerRentals", x => new { x.CustomerId, x.RentalId });
                     table.ForeignKey(
-                        name: "FK_CustomerRental_Customers_CustomerId",
+                        name: "FK_CustomerRentals_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CustomerRental_Rentals_RentalId",
+                        name: "FK_CustomerRentals_Rentals_RentalId",
                         column: x => x.RentalId,
                         principalTable: "Rentals",
                         principalColumn: "Id",
@@ -103,13 +105,13 @@ namespace Bikeservice.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BikeRental_RentalId",
-                table: "BikeRental",
+                name: "IX_BikeRentals_RentalId",
+                table: "BikeRentals",
                 column: "RentalId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CustomerRental_RentalId",
-                table: "CustomerRental",
+                name: "IX_CustomerRentals_RentalId",
+                table: "CustomerRentals",
                 column: "RentalId");
         }
 
@@ -117,10 +119,10 @@ namespace Bikeservice.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BikeRental");
+                name: "BikeRentals");
 
             migrationBuilder.DropTable(
-                name: "CustomerRental");
+                name: "CustomerRentals");
 
             migrationBuilder.DropTable(
                 name: "Bikes");
