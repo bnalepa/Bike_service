@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bikeservice.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20230125221530_FMigration")]
-    partial class FMigration
+    [Migration("20230127062658_FirstContext")]
+    partial class FirstContext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

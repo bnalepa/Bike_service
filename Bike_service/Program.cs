@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Identity;
 using Bike_service.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using static Bike_service.Areas.Identity.Data.IdentityContext;
+using Microsoft.VisualBasic;
 
 var builder = WebApplication.CreateBuilder( args );
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+AddAuthorizationPolicies(builder.Services);
+
 builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BikeDbContext")));
 
 //builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
     ;//.AddEntityFrameworkStores<IdentityContext>();
+
 
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<IdentityContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BikeDbContext")));
@@ -67,3 +71,13 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}" );
 app.MapRazorPages();
 app.Run();
+
+void AddAuthorizationPolicies(IServiceCollection services)
+{
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("UsersOnly", policy => policy.RequireClaim("UserNumber"));
+    });
+
+    
+}

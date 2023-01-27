@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Bike_service.Data;
 using Bike_service.Models;
 
+
 namespace Bike_service.Controllers.API
 {
     [Route("api/[controller]")]
@@ -33,7 +34,7 @@ namespace Bike_service.Controllers.API
         public async Task<ActionResult<Rental>> GetRental(int id)
         {
             var rental = await _context.Rentals.FindAsync(id);
-
+            var bikeRental = await _context.BikeRentals.FindAsync(id);
             if (rental == null)
             {
                 return NotFound();

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Bike_service.Data;
 using Bike_service.Models;
 using Bike_service.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Bike_service.Controllers
 {
@@ -51,6 +52,7 @@ namespace Bike_service.Controllers
             return View(await _rental.CreateRental(rental));
         }
         // GET: Rentals/Create
+        //[Authorize(Policy = "UsersOnly")]
         public IActionResult Create()
         {
             return View();
