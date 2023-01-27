@@ -1,6 +1,12 @@
 using Bike_service;
 using Bike_service.Data;
+using Bike_service.Repository;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Bike_service.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using static Bike_service.Areas.Identity.Data.IdentityContext;
 
 var builder = WebApplication.CreateBuilder( args );
 
@@ -8,7 +14,19 @@ var builder = WebApplication.CreateBuilder( args );
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BikeDbContext")));
+
+//builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    ;//.AddEntityFrameworkStores<IdentityContext>();
+
+builder.Services.AddRazorPages();
+builder.Services.AddDbContext<IdentityContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BikeDbContext")));
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+            .AddEntityFrameworkStores<IdentityContext>()
+            .AddDefaultTokenProviders()
+            .AddDefaultUI();
+
 builder.Services.AddTransient<DataSeed>();
+builder.Services.AddScoped<IRental,RentalRepository>();
 
 var app = builder.Build();
 
@@ -39,11 +57,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}" );
-
+app.MapRazorPages();
 app.Run();

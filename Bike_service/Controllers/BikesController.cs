@@ -7,95 +7,86 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bike_service.Data;
 using Bike_service.Models;
-using Bike_service.Repository;
 
 namespace Bike_service.Controllers
 {
-    public class RentalsController : Controller
+    public class BikesController : Controller
     {
         private readonly AppDBContext _context;
-        private static IRental _rental;
 
-        public RentalsController(AppDBContext context, IRental rental)
+        public BikesController(AppDBContext context)
         {
             _context = context;
-            _rental = rental;
         }
 
-        // GET: Rentals
+        // GET: Bikes
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Rentals.ToListAsync());
+              return View(await _context.Bikes.ToListAsync());
         }
 
-        // GET: Rentals/Details/5
+        // GET: Bikes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Rentals == null)
+            if (id == null || _context.Bikes == null)
             {
                 return NotFound();
             }
 
-            var rental = await _context.Rentals
+            var bike = await _context.Bikes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (rental == null)
+            if (bike == null)
             {
                 return NotFound();
             }
 
-            return View(rental);
+            return View(bike);
         }
 
-        public async Task<IActionResult> CreateRental(Rental rental)
-        {
-            return View(await _rental.CreateRental(rental));
-        }
-        // GET: Rentals/Create
+        // GET: Bikes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Rentals/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Bikes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,StartDate,EndDate")] Rental rental)
+        public async Task<IActionResult> Create([Bind("Id,Name,Type,Description")] Bike bike)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rental);
+                _context.Add(bike);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(rental);
+            return View(bike);
         }
 
-        // GET: Rentals/Edit/5
+        // GET: Bikes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Rentals == null)
+            if (id == null || _context.Bikes == null)
             {
                 return NotFound();
             }
 
-            var rental = await _context.Rentals.FindAsync(id);
-            if (rental == null)
+            var bike = await _context.Bikes.FindAsync(id);
+            if (bike == null)
             {
                 return NotFound();
             }
-            return View(rental);
+            return View(bike);
         }
 
-        // POST: Rentals/Edit/5
+        // POST: Bikes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,StartDate,EndDate")] Rental rental)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Type,Description")] Bike bike)
         {
-            if (id != rental.Id)
+            if (id != bike.Id)
             {
                 return NotFound();
             }
@@ -104,12 +95,12 @@ namespace Bike_service.Controllers
             {
                 try
                 {
-                    _context.Update(rental);
+                    _context.Update(bike);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RentalExists(rental.Id))
+                    if (!BikeExists(bike.Id))
                     {
                         return NotFound();
                     }
@@ -120,49 +111,49 @@ namespace Bike_service.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(rental);
+            return View(bike);
         }
 
-        // GET: Rentals/Delete/5
+        // GET: Bikes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Rentals == null)
+            if (id == null || _context.Bikes == null)
             {
                 return NotFound();
             }
 
-            var rental = await _context.Rentals
+            var bike = await _context.Bikes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (rental == null)
+            if (bike == null)
             {
                 return NotFound();
             }
 
-            return View(rental);
+            return View(bike);
         }
 
-        // POST: Rentals/Delete/5
+        // POST: Bikes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Rentals == null)
+            if (_context.Bikes == null)
             {
-                return Problem("Entity set 'AppDBContext.Rentals'  is null.");
+                return Problem("Entity set 'AppDBContext.Bikes'  is null.");
             }
-            var rental = await _context.Rentals.FindAsync(id);
-            if (rental != null)
+            var bike = await _context.Bikes.FindAsync(id);
+            if (bike != null)
             {
-                _context.Rentals.Remove(rental);
+                _context.Bikes.Remove(bike);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RentalExists(int id)
+        private bool BikeExists(int id)
         {
-          return _context.Rentals.Any(e => e.Id == id);
+          return _context.Bikes.Any(e => e.Id == id);
         }
     }
 }

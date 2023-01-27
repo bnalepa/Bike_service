@@ -23,17 +23,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Rentals" asp-action="Index">Oferta</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Bikes" asp-action="Index">Oferta</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Rentals" asp-action="Index">Rezerwacje</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Logowanie</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Rentals" asp-action="Create">Rezerwacje</a>
                         </li>
                     </ul>
                 </div>
+                <partial name="_LoginPartial" />
             </div>
+
         </nav>
     </header>
     <div class="container">
@@ -44,7 +43,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Bike_service - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - Bike_service -
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
