@@ -77,7 +77,9 @@ namespace Bike_service.Controllers
             return View(rental);
         }
 
+
         // GET: Rentals/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Rentals == null)
@@ -96,6 +98,7 @@ namespace Bike_service.Controllers
         // POST: Rentals/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,StartDate,EndDate")] Rental rental)
@@ -129,6 +132,7 @@ namespace Bike_service.Controllers
         }
 
         // GET: Rentals/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Rentals == null)
