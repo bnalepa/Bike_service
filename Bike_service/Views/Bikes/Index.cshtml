@@ -6,9 +6,7 @@
 
 <h2 class = "display-5">Zapoznaj się z naszą ofertą</h2>
 <hr/>
-<p>
-    <a asp-action="Create">Dodaj nowy rower</a>
-</p>
+
 <table class="table">
     <tbody>
 @foreach (var item in Model) {
@@ -19,11 +17,13 @@
                     <b> Kategoria:</b> @Html.DisplayFor(modelItem => item.Type)<br>
 
                     <b> Opis:</b> @Html.DisplayFor(modelItem => item.Description)<br>
-
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> <br>
-                    <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> <br>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
-            </td>
+                    @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> <br>
+                        <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> <br>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                    }
+                </td>
         </tr>
 }
     </tbody>

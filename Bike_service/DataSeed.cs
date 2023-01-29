@@ -51,14 +51,26 @@ namespace Bike_service
 
                 new Bike()
                 {
-                Name = "Rower",
-                Description = "Szybki",
+                Name = "TREK Domane SLR 7",
+                Description = "TREK Domane SLR 7 to wyjątkowo lekki długodystansowy rower szosowy z włókna węglowego wyposażony w wysokiej klasy części stworzone do szybkiej i sprawnej jazdy. Otrzymujesz naszą najlepszą ramę z włókna węglowego OCLV z tylnym rozdzielaczem IsoSpeed, bezprzewodowy elektronicznie sterowany napęd SRAM Force dla precyzyjnej zmiany biegów oraz koła z włókna węglowego OCLV. Ponadto model ten posiada łatwo dostępny schowek na niezbędne rzeczy do jazdy oraz uniwersalny prześwit na opony 38c, który pozwoli lekko sunąć po nierównych drogach i lekkim szutrze.",
+                Type = Bike.Types.górski,
+                },
+                new Bike()
+                {
+                Name = "TREK Verve 3",
+                Description = "TREK Verve 3 Equipped to doskonale prowadzący się rower hybrydowy stworzony z myślą o wygodnym przemieszczaniu się po drogach, ścieżkach i ulicach. Został wyposażony w lekki napęd kategorii szosowej, wygładzający nierówności nawierzchni amortyzowany widelec Forklight 3.0 i sztycę, a także w piastę z prądnicą, zasilającą oświetlenie roweru. Dodatkowo, rower ten został także wyposażony w wiele użytecznych udogodnień, takich jak błotniki, oświetlenie i bagażnik tylny kompatybilny z MIK.",
                 Type = Bike.Types.miejski,
                 },
                 new Bike()
                 {
-                Name = "Rower 2",
-                Description = "Wolny",
+                Name = "TREK FX Sport 5",
+                Description = "TREK FX Sport 5 to rower do fitnessu z włókna węglowego dla kogoś, kto szuka połączenia lekkiej szosówki z komfortem i kontrolą płaskiej kierownicy. Ma usprawniony, wysokiej jakości napęd, hydrauliczne hamulce tarczowe i przystosowane do montażu bezdętkowego obręcze, dzięki czemu idealnie się sprawdza zarówno podczas indywidualnych ćwiczeń, jak i szybkich przejażdżek grupowych. ",
+                Type = Bike.Types.górski,
+                },
+                new Bike()
+                {
+                Name = "TREK Marlin 6",
+                Description = "TREK Marlin 6 to idealna maszyna do poprawienia swoich umiejętności na szlaku. Jego ulepszona, bardziej płaska geometria ramy ułatwia zachowanie kontroli na zjazdach, podczas gdy amortyzowany widelec bierze na siebie wyboje na szlaku. Zintegrowane mocowania na bagażnik i nóżkę ułatwiają dodawanie akcesoriów do tej wszechstronnej maszyny.",
                 Type = Bike.Types.górski,
                 },
             };

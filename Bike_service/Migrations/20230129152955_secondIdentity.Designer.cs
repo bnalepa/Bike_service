@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bikeservice.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230127062634_ThirdIdentity")]
-    partial class ThirdIdentity
+    [Migration("20230129152955_secondIdentity")]
+    partial class secondIdentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -5,7 +5,7 @@
 namespace Bikeservice.Migrations
 {
     /// <inheritdoc />
-    public partial class ThirdIdentity : Migration
+    public partial class secondIdentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

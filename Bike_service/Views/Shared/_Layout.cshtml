@@ -25,9 +25,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Bikes" asp-action="Index">Oferta</a>
                         </li>
+                        @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Bikes" asp-action="Create">Dodaj nowy rower</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Rentals" asp-action="Create">Rezerwacje</a>
                         </li>
+                        @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+                    {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Rentals" asp-action="Index">Zarządzaj rezerwacjami</a>
+                            </li>
+                    }
+
                     </ul>
                 </div>
                 <partial name="_LoginPartial" />

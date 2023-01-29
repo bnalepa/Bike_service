@@ -24,12 +24,14 @@ namespace Bike_service.Controllers
         }
 
         // GET: Rentals
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Rentals.ToListAsync());
         }
 
         // GET: Rentals/Details/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Rentals == null)
@@ -55,6 +57,7 @@ namespace Bike_service.Controllers
         //[Authorize(Policy = "UsersOnly")]
         public IActionResult Create()
         {
+            ViewData["BikeRental"] = new SelectList(_context.Bikes, "Bikeid", "Name");
             return View();
         }
 
