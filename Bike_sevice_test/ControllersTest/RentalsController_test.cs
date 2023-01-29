@@ -8,5 +8,6 @@ namespace Bike_sevice_test.ControllersTest
 {
     internal class RentalsController_test
     {
+
     }
 }
