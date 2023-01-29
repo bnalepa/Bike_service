@@ -17,3 +17,8 @@ update-database -context IdentityContext
 W terminalu:
 
 dotnet run seeddata
+
+
+Domyślne konto administratora:
+login: bnalepa@o2.pl 
+hasło: zaq1@WSX
